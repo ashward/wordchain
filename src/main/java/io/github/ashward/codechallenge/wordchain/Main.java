@@ -1,7 +1,7 @@
-package io.github.ashward.codechallenge.wordpaths;
+package io.github.ashward.codechallenge.wordchain;
 
-import io.github.ashward.codechallenge.wordpaths.worker.AbstractWorker;
-import io.github.ashward.codechallenge.wordpaths.worker.WorkerBidirectional;
+import io.github.ashward.codechallenge.wordchain.worker.AbstractWorker;
+import io.github.ashward.codechallenge.wordchain.worker.WorkerBidirectional;
 
 import java.io.File;
 import java.io.InputStream;

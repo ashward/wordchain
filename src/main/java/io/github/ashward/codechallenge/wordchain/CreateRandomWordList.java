@@ -1,4 +1,4 @@
-package io.github.ashward.codechallenge.wordpaths;
+package io.github.ashward.codechallenge.wordchain;
 
 import java.io.File;
 import java.io.FileWriter;

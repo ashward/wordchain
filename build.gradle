@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '5.1.0'
 }
 
 group 'io.github.ashward.codechallenge'
@@ -17,15 +16,10 @@ dependencies {
 }
 
 apply plugin:'application'
-mainClassName = "io.github.ashward.codechallenge.wordpaths.Main"
+mainClassName = "io.github.ashward.codechallenge.wordchain.Main"
 
 jar {
     manifest {
-        attributes 'Main-Class': 'io.github.ashward.codechallenge.wordpaths.Main'
+        attributes 'Main-Class': 'io.github.ashward.codechallenge.wordchain.Main'
     }
 }
-
-shadowJar {
-    baseName = 'wordpaths-ash'
-}
-

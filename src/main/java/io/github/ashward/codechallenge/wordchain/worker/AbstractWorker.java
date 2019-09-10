@@ -1,4 +1,4 @@
-package io.github.ashward.codechallenge.wordpaths.worker;
+package io.github.ashward.codechallenge.wordchain.worker;
 
 import java.util.HashSet;
 import java.util.List;

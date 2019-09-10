@@ -22,11 +22,11 @@ To build:
 and then
 
 ```
-java -jar build/libs/wordpaths-1.0-SNAPSHOT.jar <filename>
+java -jar build/libs/wordchain-1.0-SNAPSHOT.jar <filename>
 ```
 
 you can also specify the `-t` flag to get extra timings for each chain:
 
 ```
-java -jar build/libs/wordpaths-1.0-SNAPSHOT.jar <filename> -t
+java -jar build/libs/wordchain-1.0-SNAPSHOT.jar <filename> -t
 ```
