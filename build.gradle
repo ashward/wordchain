@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.1.0'
+}
+
+group 'com.enginegroup.codechallenge.wordpaths'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+apply plugin:'application'
+mainClassName = "com.enginegroup.codechallenge.wordpaths.ash.Main"
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.enginegroup.codechallenge.wordpaths.ash.Main'
+    }
+}
+
+shadowJar {
+    baseName = 'wordpaths-ash'
+}
+
