@@ -1,4 +1,4 @@
-package com.enginegroup.codechallenge.wordpaths.ash;
+package io.github.ashward.codechallenge.wordpaths;
 
 import java.io.File;
 import java.io.FileWriter;

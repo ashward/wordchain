@@ -1,4 +1,4 @@
-package com.enginegroup.codechallenge.wordpaths.ash.worker;
+package io.github.ashward.codechallenge.wordpaths.worker;
 
 import java.util.HashSet;
 import java.util.List;

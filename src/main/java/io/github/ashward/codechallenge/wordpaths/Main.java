@@ -1,7 +1,7 @@
-package com.enginegroup.codechallenge.wordpaths.ash;
+package io.github.ashward.codechallenge.wordpaths;
 
-import com.enginegroup.codechallenge.wordpaths.ash.worker.AbstractWorker;
-import com.enginegroup.codechallenge.wordpaths.ash.worker.WorkerBidirectional;
+import io.github.ashward.codechallenge.wordpaths.worker.AbstractWorker;
+import io.github.ashward.codechallenge.wordpaths.worker.WorkerBidirectional;
 
 import java.io.File;
 import java.io.InputStream;
