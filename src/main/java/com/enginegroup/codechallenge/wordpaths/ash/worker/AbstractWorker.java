@@ -21,7 +21,7 @@ public abstract class AbstractWorker {
   }
 
   char[] validChars = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-  'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '\''};
+          'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '\''};
 
   public abstract List<String> getPath();
 
@@ -31,11 +31,11 @@ public abstract class AbstractWorker {
 
       HashSet<String> nextWords = new HashSet<>();
 
-      for(int i = 0; i < wordToCompute.length(); ++i) {
+      for (int i = 0; i < wordToCompute.length(); ++i) {
         char originalChar = wordChars[i];
 
-        for(char c : validChars) {
-          if(c == originalChar) {
+        for (char c : validChars) {
+          if (c == originalChar) {
             continue;
           }
 
@@ -43,7 +43,7 @@ public abstract class AbstractWorker {
 
           String s = String.valueOf(wordChars);
 
-          if(sameLengthWords.contains(s)) {
+          if (sameLengthWords.contains(s)) {
             nextWords.add(s);
           }
         }

@@ -20,7 +20,7 @@ public class CreateRandomWordList {
       Map<Integer, Set<String>> words = (Map<Integer, Set<String>>) ois.readObject();
 
       File file;
-      try(FileWriter fw = new FileWriter(new File("./loadsawords.txt"))) {
+      try (FileWriter fw = new FileWriter(new File("./loadsawords.txt"))) {
         Random rand = new Random();
 
         for (int i = 0; i < 100000; ++i) {
