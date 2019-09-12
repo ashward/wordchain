@@ -53,7 +53,9 @@ public class WorkerBidirectional extends AbstractWorker {
           if (!fromStart.containsKey(nextWord)) {
             fromStart.put(nextWord, word);
             newWordsFromStart.add(nextWord);
-            exhausted = false;
+            if(exhausted) {
+              exhausted = false;
+            }
           }
 
           if (currentWordsFromEnd.contains(nextWord)) {
@@ -73,7 +75,9 @@ public class WorkerBidirectional extends AbstractWorker {
           if (!fromEnd.containsKey(nextWord)) {
             fromEnd.put(nextWord, word);
             newWordsFromEnd.add(nextWord);
-            exhausted = false;
+            if(exhausted) {
+              exhausted = false;
+            }
           }
 
           if (currentWordsFromStart.contains(nextWord)) {

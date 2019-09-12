@@ -55,35 +55,34 @@ public abstract class AbstractWorker {
     });
   }
 
-//    public Set<String> getNextWords(String word) {
+//  public Set<String> getNextWords(String word) {
+//    return nextWords.computeIfAbsent(word, (wordToCompute) ->
+//            sameLengthWords.stream().filter(thisWord -> areStringsSingleCharDifferent(thisWord, wordToCompute)).collect(Collectors.toSet())
+//    );
+//  }
 //
-//      return nextWords.computeIfAbsent(word, (wordToCompute) ->
-//              sameLengthWords.stream().filter(thisWord -> areStringsSingleCharDifferent(thisWord, wordToCompute)).collect(Collectors.toSet())
-//      );
+//  /**
+//   * @param string1
+//   * @param string2
+//   * @return true if the strings differ by a single character, false otherwise (including if they are equal)
+//   */
+//  public boolean areStringsSingleCharDifferent(String string1, String string2) {
+//    if (string1.equals(string2)) {
+//      return false;
 //    }
-
-  /**
-   * @param string1
-   * @param string2
-   * @return true if the strings differ by a single character, false otherwise (including if they are equal)
-   */
-  public boolean areStringsSingleCharDifferent(String string1, String string2) {
-    if (string1.equals(string2)) {
-      return false;
-    }
-
-    boolean oneCharDifferent = false;
-
-    for (int i = 0; i < string1.length(); ++i) {
-      if (string1.charAt(i) != string2.charAt(i)) {
-        if (oneCharDifferent) {
-          return false;
-        } else {
-          oneCharDifferent = true;
-        }
-      }
-    }
-
-    return true;
-  }
+//
+//    boolean oneCharDifferent = false;
+//
+//    for (int i = 0; i < string1.length(); ++i) {
+//      if (string1.charAt(i) != string2.charAt(i)) {
+//        if (oneCharDifferent) {
+//          return false;
+//        } else {
+//          oneCharDifferent = true;
+//        }
+//      }
+//    }
+//
+//    return true;
+//  }
 }

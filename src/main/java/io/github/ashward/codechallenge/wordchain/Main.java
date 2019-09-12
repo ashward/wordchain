@@ -13,11 +13,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.stream.Collectors;
 
 public class Main {
   private Map<Integer, Set<String>> words = new HashMap<>();
@@ -41,7 +40,7 @@ public class Main {
 
   public void processFile(File inputFile, boolean showTiming) throws Exception {
     try (Scanner scanner = new Scanner(inputFile)) {
-      List<Callable<List<String>>> tasks = new ArrayList<>();
+      List<Future<List<String>>> results = new ArrayList<>();
 
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();
@@ -53,7 +52,7 @@ public class Main {
         }
 
         if (showTiming) {
-          tasks.add(() -> {
+          results.add(executor.submit(() -> {
             long time = System.currentTimeMillis();
 
             try {
@@ -61,16 +60,11 @@ public class Main {
             } finally {
               System.out.println(words[0] + " -> " + words[1] + " = " + (System.currentTimeMillis() - time) + "ms");
             }
-          });
+          }));
         } else {
-          tasks.add(() -> getWordPath(words[0], words[1]));
+          results.add(executor.submit(() -> getWordPath(words[0], words[1])));
         }
       }
-
-      List<Future<List<String>>> results = new ArrayList<>();
-
-      // Submit the tasks to the executor and get the futures
-      results.addAll(tasks.stream().map(executor::submit).collect(Collectors.toList()));
 
       // Go through the futures and print out the results (in order) as they appear
       for (Future<List<String>> result : results) {
@@ -78,11 +72,37 @@ public class Main {
           System.out.println(result.get().size() + " " + String.join(",", result.get()));
         }
       }
+
+//      results.stream()
+//              .map(this::futureGetOrNull)
+//              .filter(result -> result != null)
+//              .forEach(result -> System.out.println(result.size() + " " + String.join(",", result)));
     } catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
+      Thread.currentThread().interrupt(); // re-set the interrupted flag
     } finally {
       executor.shutdownNow();
     }
+  }
+
+  /**
+   * A {@link RuntimeException} to wrap an {@link InterruptedException} so that we can break execution if required
+   */
+  private class RuntimeInterruptedException extends RuntimeException {
+    public RuntimeInterruptedException(InterruptedException cause) {
+      super(cause);
+    }
+  }
+
+  private <T> T futureGetOrNull(Future<T> future) {
+    try {
+      return future.get();
+    } catch (InterruptedException e) {
+      throw new RuntimeInterruptedException(e);
+    } catch (ExecutionException e) {
+      e.printStackTrace();
+    }
+
+    return null;
   }
 
   private void loadWordsList() throws Exception {
